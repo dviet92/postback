@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="urlDB1Model2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ClickLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IPAddress" Type="nvarchar(max)" />
+          <Property Name="UserAgent" Type="nvarchar(max)" />
+          <Property Name="clickTime" Type="datetime" />
+          <Property Name="used" Type="bit" />
+          <Property Name="clickID" Type="int" />
+          <Property Name="appName" Type="nvarchar(max)" />
+          <Property Name="appID" Type="nvarchar(max)" />
+          <Property Name="countryCode" Type="nvarchar(max)" />
+          <Property Name="idfa" Type="nvarchar(max)" />
+          <Property Name="iditune" Type="nvarchar(max)" />
+          <Property Name="referrer" Type="nvarchar(max)" />
+          <Property Name="version" Type="nvarchar(max)" />
+          <Property Name="transactionID" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="urlDB">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" />
+          <Property Name="url" Type="nvarchar(max)" />
+          <Property Name="ind" Type="int" />
+          <Property Name="network" Type="nvarchar(max)" />
+          <Property Name="payout" Type="float" />
+        </EntityType>
+        <EntityContainer Name="urlDB1Model2StoreContainer">
+          <EntitySet Name="ClickLog" EntityType="Self.ClickLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="urlDB" EntityType="Self.urlDB" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="urlDB1Model2" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ClickLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IPAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserAgent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="clickTime" Type="DateTime" Precision="3" />
+          <Property Name="used" Type="Boolean" />
+          <Property Name="clickID" Type="Int32" />
+          <Property Name="appName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="appID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="countryCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="idfa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="iditune" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="referrer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="version" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="transactionID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="urlDB">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ind" Type="Int32" />
+          <Property Name="network" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="payout" Type="Double" />
+        </EntityType>
+        <EntityContainer Name="urlDB1Entities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ClickLogs" EntityType="Self.ClickLog" />
+          <EntitySet Name="urlDBs" EntityType="Self.urlDB" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="urlDB1Model2StoreContainer" CdmEntityContainer="urlDB1Entities2">
+          <EntitySetMapping Name="ClickLogs">
+            <EntityTypeMapping TypeName="urlDB1Model2.ClickLog">
+              <MappingFragment StoreEntitySet="ClickLog">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="UserAgent" ColumnName="UserAgent" />
+                <ScalarProperty Name="clickTime" ColumnName="clickTime" />
+                <ScalarProperty Name="used" ColumnName="used" />
+                <ScalarProperty Name="clickID" ColumnName="clickID" />
+                <ScalarProperty Name="appName" ColumnName="appName" />
+                <ScalarProperty Name="appID" ColumnName="appID" />
+                <ScalarProperty Name="countryCode" ColumnName="countryCode" />
+                <ScalarProperty Name="idfa" ColumnName="idfa" />
+                <ScalarProperty Name="iditune" ColumnName="iditune" />
+                <ScalarProperty Name="referrer" ColumnName="referrer" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="transactionID" ColumnName="transactionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="urlDBs">
+            <EntityTypeMapping TypeName="urlDB1Model2.urlDB">
+              <MappingFragment StoreEntitySet="urlDB">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="ind" ColumnName="ind" />
+                <ScalarProperty Name="network" ColumnName="network" />
+                <ScalarProperty Name="payout" ColumnName="payout" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

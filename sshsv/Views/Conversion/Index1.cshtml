@@ -1,0 +1,58 @@
+﻿@model IEnumerable<sshsv.Models.conversiontotal>
+
+@{
+    ViewBag.Title = "Conversion Report";
+}
+
+<h2>Thống kê Conversion: Tống số conversion: @ViewBag.TotalCons</h2>
+<style type="text/css">
+    .whiterow {
+        background-color: White;
+    }
+
+    .aquarow {
+        background-color: #e1e3e8;
+    }
+</style>
+@{var lines = 0;}
+
+<table class="table">
+    <tr>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.offerID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.network)
+        </th>
+        <th>
+            Tổng số Conversion
+        </th>
+   
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="@(lines++%2==0 ? "whiterow" : "aquarow")">
+           
+            <td>
+
+                @Html.ActionLink(item.offerID, "Detail", new { offerID = item.offerID, network = item.network })
+
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.network)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.conversion_count)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.conversion_pb_count)
+            </td>
+
+        </tr>
+    }
+
+</table>

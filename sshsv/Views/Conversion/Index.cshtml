@@ -1,0 +1,95 @@
+﻿@model IEnumerable<sshsv.Models.conversiontotal>
+
+@{
+    ViewBag.Title = "Conversion Report";
+}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.5/jquery.timeago.js"></script>
+
+<h2>Thống kê Conversion: Tống số conversion: @ViewBag.TotalCons</h2>
+<h2>Last Update: @ViewBag.LastUpdate</h2>
+<style type="text/css">
+    .whiterow {
+        background-color: White;
+    }
+
+    .aquarow {
+        background-color: #e1e3e8;
+    }
+</style>
+@{var lines = 0;}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.offerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.offerID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.network)
+        </th>
+        <th>
+            Tổng số Conversion
+        </th>
+        <th>
+            Số lượt lead trong giờ này
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lastconversion)
+        </th>
+        <th>
+            Lượt click trong 60 phút
+        </th>
+        <th>
+            Lượt Click thành công trong 60 phút
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="@(lines++%2==0 ? "whiterow" : "aquarow")">
+            <td>
+                @if (item.urlpath != null && item.urlpath != "")
+                {
+                    <a href="@item.urlpath">
+                        @item.offerName
+                    </a>
+                }
+                else
+                {
+                    <a href="http://url.devmoba.com/">
+
+                    </a>
+                }
+
+            </td>
+            <td>
+
+                @Html.ActionLink(item.offerID, "DetailByURLID", new { offerID = item.offerID, network = item.network ,urlid = item.urlid,server=item.server})
+
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.network)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.conversion_count)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.conversion_pb_count)
+            </td>
+            <td>
+                @item.lastconversion.ToShortTimeString()
+            </td>
+            <td>
+                @item.totalClick
+            </td>
+            <td>
+                @item.unusedClick
+            </td>
+        </tr>
+    }
+
+</table>

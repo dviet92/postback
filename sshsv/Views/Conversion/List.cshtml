@@ -1,0 +1,47 @@
+﻿@model IEnumerable<sshsv.Models.offerlistdetail>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+           Date
+        </th>
+        <th>
+           Network
+        </th>
+        <th>
+           OfferID
+        </th>
+        <th>
+            Total Conversion
+        </th>
+
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.datetime.ToString("MM/dd/yyyy")
+           </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.network)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.offerID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.conversion_cnt)
+        </td>
+
+    </tr>
+}
+
+</table>

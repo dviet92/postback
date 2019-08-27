@@ -1,0 +1,70 @@
+﻿@model IEnumerable<sshsv.Models.ssh>
+@{
+    ViewBag.Title = "SSH List";
+}
+
+@using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <h3>Upload SSH Files</h3>
+    <input type="file" name="files" value="" multiple="multiple" />
+    <input type="submit" value="Upload SSH File" title="Upload" />
+    <div style="color:Red;font-size:14px">@ViewBag.Message</div>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            Country
+        </th>
+        <th>
+            Số Lượng Live
+        </th>
+        <th>
+            Số lượng Die
+        </th>
+        <th>
+            Chưa Dùng
+        </th>
+         
+        <th>
+            @Html.ActionLink("Refresh All", "RefreshAll")
+        </th>
+        <th>
+
+            @Html.ActionLink("Delete All", "DeleteAll")
+        </th>
+        <th>
+            @Html.ActionLink("Download All", "DownloadAll")
+        </th>
+        <th></th>
+    </tr>
+    @{
+        var listcountry = Model.Select(x => x.country).Distinct();
+    }
+    @foreach (var item in listcountry.OrderBy(x=>x))
+    {
+
+        <tr>
+            <td>
+                @item
+            </td>
+            <td>
+                @Model.Count(x => x.country == item&&x.live==true)
+            </td>
+            <td>
+                @Html.ActionLink(@Model.Count(x => x.country == item & x.live != true).ToString(), "RemoveDie", new { item })
+            </td>
+            <td>
+                @Model.Count(x => x.country == item && x.used == null)
+            </td>
+            <td>
+                @Html.ActionLink("Refresh", "Refresh", new { item })
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { item })
+            </td>
+            <td>
+                @Html.ActionLink("Download", "Download", new { item })
+            </td>
+        </tr>
+    }

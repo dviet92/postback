@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Alias="Self" Namespace="sshserver3Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012">
+        <EntityType Name="conversion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="networkID" Type="int" />
+          <Property Name="offerID" MaxLength="50" Type="nvarchar" />
+          <Property Name="aff_source" MaxLength="50" Type="nvarchar" />
+          <Property Name="aff_subid1" MaxLength="50" Type="nvarchar" />
+          <Property Name="aff_subid2" MaxLength="50" Type="nvarchar" />
+          <Property Name="aff_subid3" MaxLength="50" Type="nvarchar" />
+          <Property Name="session_ip" MaxLength="50" Type="nvarchar" />
+          <Property Name="payout" MaxLength="50" Type="nvarchar" />
+          <Property Name="device_brand" MaxLength="50" Type="nvarchar" />
+          <Property Name="device_model" MaxLength="50" Type="nvarchar" />
+          <Property Name="device_os" MaxLength="50" Type="nvarchar" />
+          <Property Name="time_install" Type="smalldatetime" />
+          <Property Name="country" MaxLength="50" Type="nvarchar" />
+          <Property Name="postback" Type="bit" />
+          <Property Name="transactionID" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="network">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="networkName" MaxLength="50" Type="nvarchar" />
+          <Property Name="networkPb" Type="nvarchar(max)" />
+          <Property Name="s_rate" Type="float" />
+        </EntityType>
+        <EntityType Name="ssh">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="ssh" MaxLength="50" Type="nvarchar" />
+          <Property Name="username" MaxLength="50" Type="nvarchar" />
+          <Property Name="password" MaxLength="50" Type="nvarchar" />
+          <Property Name="country" MaxLength="50" Type="nvarchar" />
+          <Property Name="city" MaxLength="50" Type="nvarchar" />
+          <Property Name="used" Type="nvarchar(max)" />
+          <Property Name="live" Type="bit" />
+        </EntityType>
+        <EntityContainer Name="sshserver3ModelStoreContainer">
+          <EntitySet Name="conversion" EntityType="Self.conversion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="network" EntityType="Self.network" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ssh" EntityType="Self.ssh" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="sshserver3Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ssh">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ssh1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="used" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="live" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="sshserver3Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sshes" EntityType="Self.ssh" />
+          <EntitySet Name="conversions" EntityType="sshserver3Model.conversion" />
+          <EntitySet Name="networks" EntityType="sshserver3Model.network" />
+          <AssociationSet Name="FK_conversion_network" Association="sshserver3Model.FK_conversion_network">
+            <End EntitySet="networks" Role="network" />
+            <End EntitySet="conversions" Role="conversion" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="conversion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="networkID" Type="Int32" />
+          <Property Name="offerID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="aff_source" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="aff_subid1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="aff_subid2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="aff_subid3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="session_ip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="payout" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="device_brand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="device_model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="device_os" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="time_install" Type="DateTime" Precision="0" />
+          <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="network" Relationship="sshserver3Model.FK_conversion_network" FromRole="conversion" ToRole="network" />
+          <Property Name="postback" Type="Boolean" />
+          <Property Name="transactionID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="network">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="networkName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="networkPb" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="s_rate" Type="Double" />
+          <NavigationProperty Name="conversions" Relationship="sshserver3Model.FK_conversion_network" FromRole="network" ToRole="conversion" />
+        </EntityType>
+        <Association Name="FK_conversion_network">
+          <End Type="sshserver3Model.network" Multiplicity="0..1" Role="network" />
+          <End Type="sshserver3Model.conversion" Multiplicity="*" Role="conversion" />
+          <ReferentialConstraint>
+            <Principal Role="network">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="conversion">
+              <PropertyRef Name="networkID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="sshserver3ModelStoreContainer" CdmEntityContainer="sshserver3Entities">
+          <EntitySetMapping Name="sshes">
+            <EntityTypeMapping TypeName="sshserver3Model.ssh">
+              <MappingFragment StoreEntitySet="ssh">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ssh1" ColumnName="ssh" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="used" ColumnName="used" />
+                <ScalarProperty Name="live" ColumnName="live" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="conversions">
+            <EntityTypeMapping TypeName="sshserver3Model.conversion">
+              <MappingFragment StoreEntitySet="conversion">
+                <ScalarProperty Name="transactionID" ColumnName="transactionID" />
+                <ScalarProperty Name="postback" ColumnName="postback" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="time_install" ColumnName="time_install" />
+                <ScalarProperty Name="device_os" ColumnName="device_os" />
+                <ScalarProperty Name="device_model" ColumnName="device_model" />
+                <ScalarProperty Name="device_brand" ColumnName="device_brand" />
+                <ScalarProperty Name="payout" ColumnName="payout" />
+                <ScalarProperty Name="session_ip" ColumnName="session_ip" />
+                <ScalarProperty Name="aff_subid3" ColumnName="aff_subid3" />
+                <ScalarProperty Name="aff_subid2" ColumnName="aff_subid2" />
+                <ScalarProperty Name="aff_subid1" ColumnName="aff_subid1" />
+                <ScalarProperty Name="aff_source" ColumnName="aff_source" />
+                <ScalarProperty Name="offerID" ColumnName="offerID" />
+                <ScalarProperty Name="networkID" ColumnName="networkID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="networks">
+            <EntityTypeMapping TypeName="sshserver3Model.network">
+              <MappingFragment StoreEntitySet="network">
+                <ScalarProperty Name="s_rate" ColumnName="s_rate" />
+                <ScalarProperty Name="networkPb" ColumnName="networkPb" />
+                <ScalarProperty Name="networkName" ColumnName="networkName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

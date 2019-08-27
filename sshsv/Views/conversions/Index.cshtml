@@ -1,0 +1,105 @@
+﻿@model IEnumerable<sshsv.Models.conversion>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.offerID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.aff_source)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.aff_subid1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.aff_subid2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.aff_subid3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.session_ip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.payout)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.device_brand)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.device_model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.device_os)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.time_install)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.country)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.network.networkName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.offerID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.aff_source)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.aff_subid1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.aff_subid2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.aff_subid3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.session_ip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.payout)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.device_brand)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.device_model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.device_os)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.time_install)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.country)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.network.networkName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
